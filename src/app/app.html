@@ -1,13 +1,13 @@
-Hello world
 <div>
      <h1>{{appTitle}}</h1>
-</div>
-<div>
-  <h2>{{user.name}}</h2>
+
 </div>
 <hr>
 <div>
-  <button (click)="changeAppTitle()"> Hello </button>
-  <div>{{text}}</div>
-  <input type="text" [value]="text" (input)="changeTitleHandler($event)"/>
+  <inst-child [titleProps]="text" />
+</div>
+<hr>
+<div>
+  <h2>{{text}}</h2>
+  <input type="text" [value]="text" [(ngModel)]="text"/>
 </div>

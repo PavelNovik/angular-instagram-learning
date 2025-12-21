@@ -18,12 +18,19 @@ export class App {
     age: 32,
     name: 'John Doe',
   };
-  isAppLoading = signal(true);
+  // isAppLoading = signal(true);
+  changeAppTitle(): void {
+    this.appTitle = 'New York';
+    this.user.name = 'Boris';
+  }
 
-  constructor() {
-    setTimeout(() => {
-      console.log('App is loading...');
-      this.isAppLoading.set(false);
-    }, 3000);
+  // constructor() {
+  //   setTimeout(() => {
+  //     console.log('App is loading...');
+  //     this.isAppLoading.set(false);
+  //   }, 3000);
+  // }
+  changeTitleHandler(event: Event): void {
+    this.appTitle = (event.currentTarget as HTMLInputElement).value;
   }
 }

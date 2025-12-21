@@ -4,9 +4,10 @@
 </div>
 <hr>
 <div>
-  <inst-child [titleProps]="text" />
+  <inst-child [titleProps]="text" (child)="getName($event)" />
 </div>
 <hr>
+<h3>{{name}}</h3>
 <div>
   <h2>{{text}}</h2>
   <input type="text" [value]="text" [(ngModel)]="text"/>

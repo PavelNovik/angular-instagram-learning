@@ -10,7 +10,12 @@ import { Child } from '../child/child';
   styleUrls: ['./app.scss'],
 })
 export class App {
+  name?: string;
   appTitle = 'Instagram';
 
   text = 'start value';
+
+  getName(name: string): void {
+    this.name = name;
+  }
 }

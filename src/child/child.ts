@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'inst-child',
@@ -9,4 +9,10 @@ import { Component, Input } from '@angular/core';
 })
 export class Child {
   @Input() titleProps?: string;
+  @Output() child = new EventEmitter<string>();
+
+  sendNameHandler(): void {
+    const name = 'child';
+    this.child.emit(name);
+  }
 }

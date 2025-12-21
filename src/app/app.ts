@@ -1,5 +1,4 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 
 type IUser = {
   age: number;
@@ -8,15 +7,23 @@ type IUser = {
 
 @Component({
   selector: 'inst-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [],
   templateUrl: './app.html',
-  styleUrl: './app.scss',
+  styleUrls: ['./app.scss'],
 })
 export class App {
-  protected readonly title = signal('angular-instagram');
   appTitle = 'Instagram';
   user: IUser = {
     age: 32,
     name: 'John Doe',
   };
+  isAppLoading = signal(true);
+
+  constructor() {
+    setTimeout(() => {
+      console.log('App is loading...');
+      this.isAppLoading.set(false);
+    }, 3000);
+  }
 }

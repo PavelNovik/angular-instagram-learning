@@ -8,5 +8,6 @@ Hello world
 <hr>
 <div>
   <button (click)="changeAppTitle()"> Hello </button>
-  <input ) type="text" (input)="changeTitleHandler($event)"/>
+  <div>{{text}}</div>
+  <input type="text" [value]="text" (input)="changeTitleHandler($event)"/>
 </div>

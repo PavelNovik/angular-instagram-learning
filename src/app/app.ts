@@ -18,6 +18,7 @@ export class App {
     age: 32,
     name: 'John Doe',
   };
+  text = 'start value';
   // isAppLoading = signal(true);
   changeAppTitle(): void {
     this.appTitle = 'New York';
@@ -31,6 +32,6 @@ export class App {
   //   }, 3000);
   // }
   changeTitleHandler(event: Event): void {
-    this.appTitle = (event.currentTarget as HTMLInputElement).value;
+    this.text = (event.currentTarget as HTMLInputElement).value;
   }
 }

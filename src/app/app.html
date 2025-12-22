@@ -1,21 +1,26 @@
 <div>
-     <h1>{{appTitle}}</h1>
+  <h1>{{ appTitle }}</h1>
 
 </div>
 <hr>
 <div>
-  <inst-child [titleProps]="text" (child)="getName($event)" />
+  <inst-child [titleProps]="text" (child)="getName($event)"/>
 </div>
 <hr>
-<h3>{{name}}</h3>
+<h3>{{ name }}</h3>
 <div>
-  <h2>{{text}}</h2>
+  <h2>{{ text }}</h2>
   <input type="text" [value]="text" [(ngModel)]="text"/>
 </div>
+@if (isLoading()) {
+  <div>
+    <h4>What the fuck</h4>
+  </div>
+} @else {
+  <div>
+    @for (a of arr; track a) {
+      <div>{{ a }}</div>
+    }
+  </div>
+}
 
-<div *ngIf="isLoading(); else elseBlock"><h4>What the fuck
-</h4>
- </div>
-<ng-template #elseBlock>
-<div  *ngFor="let a of arr">{{a}}</div>
-</ng-template>

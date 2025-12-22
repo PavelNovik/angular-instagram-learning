@@ -1,12 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Child } from '../child/child';
-import { NgForOf, NgIf } from '@angular/common';
 
 @Component({
   selector: 'inst-root',
   standalone: true,
-  imports: [FormsModule, Child, NgForOf, NgIf],
+  imports: [FormsModule, Child],
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
 })

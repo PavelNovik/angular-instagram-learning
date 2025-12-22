@@ -23,4 +23,19 @@
     }
   </div>
 }
+<input type="text" [(ngModel)]="value"/>
+@switch (value) {
+  @case ('1') {
+    <div>One</div>
+  }
+  @case ('2') {
+    <div>Two</div>
+  }
+  @case ('3') {
+    <div>Three</div>
+  }
+  @default {
+    <h4>Hi there</h4>
 
+  }
+}

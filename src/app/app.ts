@@ -10,6 +10,7 @@ import { Child } from '../child/child';
   styleUrls: ['./app.scss'],
 })
 export class App {
+  value = '';
   arr: string[] = ['asda', 'dasdad', 'adsadd'];
   name?: string;
   appTitle = 'Instagram';

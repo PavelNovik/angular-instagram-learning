@@ -12,4 +12,10 @@
   <h2>{{text}}</h2>
   <input type="text" [value]="text" [(ngModel)]="text"/>
 </div>
-<div *ngFor="let a of arr">{{a}}</div>
+
+<div *ngIf="isLoading(); else elseBlock"><h4>What the fuck
+</h4>
+ </div>
+<ng-template #elseBlock>
+<div  *ngFor="let a of arr">{{a}}</div>
+</ng-template>

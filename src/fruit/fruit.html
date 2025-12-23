@@ -1,0 +1,7 @@
+<h3>fruit works!</h3>
+@for (fruit of fruits; track fruit.id; let e = $even) {
+  <div>
+     <span [class]="{'even': e, 'odd':!e, 'novis': !(fruit.price>7), 'extr':fruit.price>15}"
+     >{{ fruit.name + '  ' + fruit.price }}</span>
+  </div>
+}

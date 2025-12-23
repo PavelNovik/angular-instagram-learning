@@ -35,12 +35,12 @@
     <div>Three</div>
   }
   @default {
-    <h4 class="error">Hi there</h4>
+    <h4 class="error" [style]="{color: 'blue', opacity: '.2'}">Hi there</h4>
 
   }
 }
 
-<h5 [class.default]="isLoading()" [class.new]="!isLoading()" [class.standard]="isLoading()">
+<h5 [class]="'default'" [class.new]="!isLoading()" [class.standard]="isLoading()">
   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi cupiditate error et iusto quas quis rerum veniam?
   Commodi corporis, dolorem, ducimus facilis impedit libero, minima modi perferendis placeat temporibus velit!
 </h5>

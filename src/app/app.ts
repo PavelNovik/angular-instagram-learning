@@ -11,10 +11,10 @@ import { Child } from '../child/child';
 })
 export class App {
   value = '';
-  arr: string[] = ['asda', 'dasdad', 'adsadd'];
+  arr: string[] = ['One', 'Two', 'Three'];
   name?: string;
   appTitle = 'Instagram';
-  isLoading = signal(true);
+  readonly isLoading = signal(true);
 
   text = 'start value';
 

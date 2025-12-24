@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CurrencyPipe, DatePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
 
 type Fruits = {
   id: string;
@@ -9,7 +10,7 @@ type Fruits = {
 @Component({
   selector: 'inst-fruit',
   standalone: true,
-  imports: [],
+  imports: [CurrencyPipe, DatePipe, UpperCasePipe, TitleCasePipe],
   templateUrl: './fruit.html',
   styleUrl: './fruit.scss',
 })
@@ -25,4 +26,6 @@ export class Fruit {
     { id: '8', name: 'grapefruit', price: 3 },
     { id: '9', name: 'peach', price: 7 },
   ];
+  currency = 125.12;
+  date = new Date();
 }

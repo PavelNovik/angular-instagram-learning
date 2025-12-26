@@ -13,10 +13,12 @@ export class CompA implements OnInit {
   value = 0;
   protected addValueHandler(): void {
     this.valueService.add();
-    console.log(this.valueService.value);
+    console.log(this.valueService.value$);
   }
 
   ngOnInit(): void {
-    this.value = this.valueService.value;
+    this.valueService.value$.subscribe((value) => {
+      this.value = value;
+    });
   }
 }

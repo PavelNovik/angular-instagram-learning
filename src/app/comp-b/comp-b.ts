@@ -13,10 +13,12 @@ export class CompB implements OnInit {
   value = 0;
   protected decValueHandler(): void {
     this.valueService.dec();
-    console.log(this.valueService.value);
+    console.log(this.valueService.value$);
   }
 
   ngOnInit(): void {
-    this.value = this.valueService.value;
+    this.valueService.value$.subscribe((value) => {
+      this.value = value;
+    });
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ValueService } from '../services/value.service';
 
 @Component({
@@ -8,6 +8,6 @@ import { ValueService } from '../services/value.service';
   styleUrl: './comp-a.scss',
 })
 export class CompA {
-  constructor(private valueService: ValueService) {}
+  private valueService = inject(ValueService);
   test = 0;
 }

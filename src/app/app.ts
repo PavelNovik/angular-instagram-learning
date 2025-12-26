@@ -4,6 +4,7 @@ import { Child } from '../child/child';
 import { Fruit } from '../fruit/fruit';
 import { SlicePipe } from '@angular/common';
 import { CompA } from './comp-a/comp-a';
+import { ValueService } from './services/value.service';
 
 @Component({
   selector: 'inst-root',
@@ -11,7 +12,7 @@ import { CompA } from './comp-a/comp-a';
   imports: [FormsModule, Child, Fruit, SlicePipe, CompA],
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
-  providers: [],
+  providers: [ValueService],
 })
 export class App {
   lorem =

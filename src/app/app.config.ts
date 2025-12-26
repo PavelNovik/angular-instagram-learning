@@ -2,8 +2,7 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { ValueService } from './services/value.service';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideBrowserGlobalErrorListeners(), provideRouter(routes), ValueService],
+  providers: [provideBrowserGlobalErrorListeners(), provideRouter(routes)],
 };

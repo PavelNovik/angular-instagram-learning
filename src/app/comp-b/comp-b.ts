@@ -7,7 +7,6 @@ import { ValueService } from '../services/value.service';
   imports: [],
   templateUrl: './comp-b.html',
   styleUrl: './comp-b.scss',
-  providers: [ValueService],
 })
 export class CompB implements OnInit {
   private valueService = inject(ValueService);

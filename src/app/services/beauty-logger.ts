@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 
-type Severety = 'error' | 'warning' | 'info' | 'success';
+type Severity = 'error' | 'warning' | 'info' | 'success';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BeautyLogger {
-  log(message: string, severty: Severety): void {
-    console.log(`%c${message}`, this.getSeverety(severty));
+  log(message: string, severity: Severity): void {
+    console.log(`%c${message}`, this.getSeverity(severity));
   }
-  getSeverety(severety: Severety): string {
-    switch (severety) {
+  getSeverity(severity: Severity): string {
+    switch (severity) {
       case 'error':
         return 'background-color: yellow; color: red; font-size: x-large;';
       case 'warning':

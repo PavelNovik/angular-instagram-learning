@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ValueService } from '../services/value.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { BeautyLogger } from '../services/beauty-logger';
 
 @Component({
   selector: 'inst-comp-a',
@@ -12,10 +13,15 @@ import { AsyncPipe } from '@angular/common';
 })
 export class CompA implements OnInit {
   private valueService = inject(ValueService);
+  private beautyLogger = inject(BeautyLogger);
   value$ = new Observable();
   protected addValueHandler(): void {
     this.valueService.add();
-    console.log(this.valueService.value$);
+    this.beautyLogger.log('success', 'info');
+    // console.log(
+    //   `%c${this.value$}`,
+    //   'background: red; color: blue; font-weight: bold; font-size: x-large',
+    // );
   }
 
   ngOnInit(): void {

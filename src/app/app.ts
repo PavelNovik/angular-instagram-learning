@@ -4,11 +4,12 @@ import { Child } from '../child/child';
 import { Fruit } from '../fruit/fruit';
 import { SlicePipe } from '@angular/common';
 import { CompA } from './comp-a/comp-a';
+import { CompB } from './comp-b/comp-b';
 
 @Component({
   selector: 'inst-root',
   standalone: true,
-  imports: [FormsModule, Child, Fruit, SlicePipe, CompA],
+  imports: [FormsModule, Child, Fruit, SlicePipe, CompA, CompB],
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
   providers: [],

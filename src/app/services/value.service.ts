@@ -1,8 +1,14 @@
-import { Injectable } from '@angular/core';
+// import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root',
-})
+// @Injectable({
+//   providedIn: 'root',
+// })
 export class ValueService {
-  value = 2;
+  value = 3;
+  add(): void {
+    this.value = this.value + 1;
+  }
+  dec(): void {
+    this.value = this.value - 1;
+  }
 }

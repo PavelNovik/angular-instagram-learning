@@ -3,13 +3,15 @@ import { FormsModule } from '@angular/forms';
 import { Child } from '../child/child';
 import { Fruit } from '../fruit/fruit';
 import { SlicePipe } from '@angular/common';
+import { CompA } from './comp-a/comp-a';
 
 @Component({
   selector: 'inst-root',
   standalone: true,
-  imports: [FormsModule, Child, Fruit, SlicePipe],
+  imports: [FormsModule, Child, Fruit, SlicePipe, CompA],
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
+  providers: [],
 })
 export class App {
   lorem =

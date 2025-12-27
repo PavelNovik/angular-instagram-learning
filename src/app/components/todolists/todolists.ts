@@ -1,7 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Todos, TodoT } from '../../services/todos';
 import { Todo } from '../todo/todo';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'inst-todolists',
@@ -10,7 +11,8 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './todolists.html',
   styleUrl: './todolists.scss',
 })
-export class Todolists implements OnInit {
+export class Todolists implements OnInit, OnDestroy {
+  subscription: Subscription | null = null;
   todos: TodoT[] = [];
   error = '';
   private todoService = inject(Todos);
@@ -26,7 +28,7 @@ export class Todolists implements OnInit {
   //   );
   // }
   getHttp(): void {
-    this.todoService.getTodos().subscribe({
+    this.subscription = this.todoService.getTodos().subscribe({
       next: (response) => {
         console.log(response);
         this.todos = response;
@@ -50,5 +52,11 @@ export class Todolists implements OnInit {
 
   ngOnInit(): void {
     this.getHttp();
+  }
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+      this.subscription = null;
+    }
   }
 }

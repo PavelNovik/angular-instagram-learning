@@ -14,7 +14,7 @@ export class Todo implements OnInit {
 
   @Input() idProps?: string;
   getTodos(): void {
-    this.todoService.getTodos(this.idProps).subscribe((response) => {
+    this.todoService.getTasks(this.idProps).subscribe((response) => {
       console.log(response);
       this.tasks = response.items;
     });

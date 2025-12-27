@@ -3,6 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
+export type BaseResp<T = object> = {
+  resultCode: number;
+  messages: string[];
+  data: T;
+};
+
 export type TodoT = {
   addedDate: string;
   id: string;
@@ -38,10 +44,20 @@ export class Todos {
   };
   private http = inject(HttpClient);
 
-  getHttp(): Observable<TodoT[]> {
+  getTodos(): Observable<TodoT[]> {
     return this.http.get<TodoT[]>(`${this.httpAddress}`, this.credentials);
   }
-  getTodos(id?: string): Observable<Tasks> {
+  getTasks(id?: string): Observable<Tasks> {
     return this.http.get<Tasks>(`${this.httpAddress}/${id}/tasks`, this.credentials);
+  }
+  createTodo(title: string): Observable<BaseResp<{ item: TodoT }>> {
+    return this.http.post<BaseResp<{ item: TodoT }>>(
+      `${this.httpAddress}`,
+      { title: title },
+      this.credentials,
+    );
+  }
+  deleteTodo(id: string): Observable<BaseResp> {
+    return this.http.delete<BaseResp>(`${this.httpAddress}/${id}`, this.credentials);
   }
 }

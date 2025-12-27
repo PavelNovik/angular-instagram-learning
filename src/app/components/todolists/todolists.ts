@@ -13,7 +13,7 @@ export class Todolists implements OnInit {
   todos: TodoT[] = [];
   private todoService = inject(Todos);
   getHttp(): void {
-    this.todoService.getHttp().subscribe((response) => {
+    this.todoService.getTodos().subscribe((response) => {
       console.log(response);
       this.todos = response;
     });

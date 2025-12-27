@@ -1,7 +1,7 @@
 <p>todo works!</p>
 <div>
 
-  <button (click)="getTodos(idProps)">show todo</button>
+  <button (click)="getTodos()">show todo</button>
   @for (task of tasks; track task.id) {
     <p>{{ task.title }}</p>
   }

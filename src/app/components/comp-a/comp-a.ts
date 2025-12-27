@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ValueService } from '../services/value.service';
+import { ValueService } from '../../services/value.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
-import { BeautyLogger } from '../services/beauty-logger';
+import { BeautyLogger } from '../../services/beauty-logger';
 
 @Component({
   selector: 'inst-comp-a',

@@ -19,6 +19,7 @@
 } @else {
   <div>
     @for (a of arr; track a) {
+
       <div>{{ a }}</div>
     }
   </div>
@@ -47,7 +48,4 @@
 <inst-comp-a/>
 <inst-comp-b/>
 
-@for (todo of todos; track todo.id) {
-  <div> {{ todo.id + '----------' + todo.title + '--------------' + todo.order }}</div>
-
-}
+<inst-todolists/>

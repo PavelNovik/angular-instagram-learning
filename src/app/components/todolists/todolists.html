@@ -1,0 +1,7 @@
+<p>todolists works!</p>
+@for (todo of todos; track todo.id) {
+  <div> {{ todo.id + '----------' + todo.title + '--------------' + todo.order }}</div>
+  <!--  <button (click)="getTodos(todo.id)">Show tasks</button>-->
+  <inst-todo [idProps]="todo.id"/>
+}
+<hr>

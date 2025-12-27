@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Todos, TodoT } from '../../services/todos';
 import { Todo } from '../todo/todo';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'inst-todolists',
@@ -11,11 +12,28 @@ import { Todo } from '../todo/todo';
 })
 export class Todolists implements OnInit {
   todos: TodoT[] = [];
+  error = '';
   private todoService = inject(Todos);
+  // _getHttp(): void {
+  //   this.todoService.getTodos().subscribe(
+  //     (response) => {
+  //       console.log(response);
+  //       this.todos = response;
+  //     },
+  //     (error: HttpErrorResponse) => {
+  //       this.error = error.message;
+  //     },
+  //   );
+  // }
   getHttp(): void {
-    this.todoService.getTodos().subscribe((response) => {
-      console.log(response);
-      this.todos = response;
+    this.todoService.getTodos().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.todos = response;
+      },
+      error: (error: HttpErrorResponse) => {
+        this.error = error.message;
+      },
     });
   }
   createTodo(): void {

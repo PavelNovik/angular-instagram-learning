@@ -18,6 +18,17 @@ export class Todolists implements OnInit {
       this.todos = response;
     });
   }
+  createTodo(): void {
+    this.todoService.createTodo('new Todolists').subscribe((response) => {
+      const newTodo = response.data.item;
+      this.todos.unshift(newTodo);
+    });
+  }
+  deleteTodo(id: string): void {
+    this.todoService.deleteTodo(id).subscribe((response) => {
+      this.todos = this.todos.filter((item) => item.id !== id);
+    });
+  }
 
   ngOnInit(): void {
     this.getHttp();

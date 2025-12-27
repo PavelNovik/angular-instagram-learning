@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
   styleUrl: './todolists.scss',
 })
 export class Todolists implements OnInit, OnDestroy {
-  subscription: Subscription | null = null;
+  subscriptions: Subscription = new Subscription();
   todos: TodoT[] = [];
   error = '';
   private todoService = inject(Todos);
@@ -28,35 +28,38 @@ export class Todolists implements OnInit, OnDestroy {
   //   );
   // }
   getHttp(): void {
-    this.subscription = this.todoService.getTodos().subscribe({
-      next: (response) => {
-        console.log(response);
-        this.todos = response;
-      },
-      error: (error: HttpErrorResponse) => {
-        this.error = error.message;
-      },
-    });
+    this.subscriptions.add(
+      this.todoService.getTodos().subscribe({
+        next: (response) => {
+          console.log(response);
+          this.todos = response;
+        },
+        error: (error: HttpErrorResponse) => {
+          this.error = error.message;
+        },
+      }),
+    );
   }
   createTodo(): void {
-    this.todoService.createTodo('new Todolists').subscribe((response) => {
-      const newTodo = response.data.item;
-      this.todos.unshift(newTodo);
-    });
+    this.subscriptions.add(
+      this.todoService.createTodo('new Todolists').subscribe((response) => {
+        const newTodo = response.data.item;
+        this.todos.unshift(newTodo);
+      }),
+    );
   }
   deleteTodo(id: string): void {
-    this.todoService.deleteTodo(id).subscribe((response) => {
-      this.todos = this.todos.filter((item) => item.id !== id);
-    });
+    this.subscriptions.add(
+      this.todoService.deleteTodo(id).subscribe((response) => {
+        this.todos = this.todos.filter((item) => item.id !== id);
+      }),
+    );
   }
 
   ngOnInit(): void {
     this.getHttp();
   }
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-      this.subscription = null;
-    }
+    this.subscriptions.unsubscribe();
   }
 }

@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export type TodoT = {
   addedDate: string;
@@ -30,10 +31,10 @@ export type Tasks = {
   providedIn: 'root',
 })
 export class Todos {
-  httpAddress = 'https://social-network.samuraijs.com/api/1.1/todo-lists';
+  httpAddress = environment.baseUrl;
   credentials = {
     withCredentials: true,
-    headers: { 'api-key': '58d16126-c44d-4aae-84b6-9bdc00838cf2' },
+    headers: { 'api-key': environment.apiKey },
   };
   private http = inject(HttpClient);
 

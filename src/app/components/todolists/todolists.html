@@ -3,7 +3,7 @@
 @if (error) {
   <h2>{{ error }}</h2>
 } @else {
-  @for (todo of todos; track todo.id) {
+  @for (todo of todos$ | async; track todo.id) {
     <div> {{ todo.id + '----------' + todo.title + '--------------' + todo.order }}</div>
     <button (click)="deleteTodo(todo.id)">delete todo</button>
     <inst-todo [idProps]="todo.id"/>

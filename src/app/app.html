@@ -37,15 +37,15 @@
   }
   @default {
     <h4 class="error" [style]="{color: 'blue', opacity: '.2'}">Hi there</h4>
-
   }
 }
-
 <h5 [class]="'default'" [class.new]="!isLoading()" [class.standard]="isLoading()">
   {{ lorem | slice: 0:19 }}
 </h5>
 <inst-fruit/>
 <inst-comp-a/>
 <inst-comp-b/>
-
+<!--@defer (on viewport) {-->
 <inst-todolists/>
+<!--}-->
+

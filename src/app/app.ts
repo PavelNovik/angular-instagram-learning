@@ -16,8 +16,7 @@ import { Todolists } from './components/todolists/todolists';
   providers: [],
 })
 export class App {
-  lorem =
-    ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi cupiditate error et iusto quas quis rerum veniam? Commodi corporis, dolorem, ducimus facilis impedit libero, minima modi perferendis placeat temporibus velit!';
+  lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit!';
   value = '';
   arr: string[] = ['One', 'Two', 'Three'];
   name?: string;

@@ -1,7 +1,8 @@
 import { inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { BehaviorSubject, catchError, EMPTY, map, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { BeautyLogger } from './beauty-logger';
 
 export type BaseResp<T = object> = {
   resultCode: number;
@@ -44,13 +45,23 @@ export class Todos {
     headers: { 'api-key': environment.apiKey },
   };
   private http = inject(HttpClient);
+  private beautyLogger = inject(BeautyLogger);
 
   getTodos(): void {
     // getTodos(): Observable<TodoT[]> {
     // return this.http.get<TodoT[]>(`${this.httpAddress}`, this.credentials);
-    this.http.get<TodoT[]>(`${this.httpAddress}`, this.credentials).subscribe((todos) => {
-      this.todos$.next(todos);
-    });
+    this.http
+      .get<TodoT[]>(`${this.httpAddress}`, this.credentials)
+      .pipe(
+        catchError((err: HttpErrorResponse) => {
+          this.beautyLogger.log(err.message, 'error');
+          return EMPTY;
+          // return throwError(err);
+        }),
+      )
+      .subscribe((todos) => {
+        this.todos$.next(todos);
+      });
   }
   getTasks(id?: string): Observable<Tasks> {
     return this.http.get<Tasks>(`${this.httpAddress}/${id}/tasks`, this.credentials);

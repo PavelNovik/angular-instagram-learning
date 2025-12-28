@@ -16,7 +16,7 @@ export class Login {
     console.log(JSON.stringify(this.loginForm.value));
   }
 
-  get email() {
-    return this.loginForm.get('email');
+  get email(): FormControl {
+    return this.loginForm.get('email') as FormControl;
   }
 }

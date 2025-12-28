@@ -5,7 +5,13 @@
   <!--  <p>{{ loginForm.value.email }}</p>-->
   @if (email!.invalid && (email!.dirty || email!.touched)) {
     <div class="alert">
-      error
+      @if (email.hasError('required')) {
+        <div>Email is required.</div>
+      }
+      @if (email.hasError('email')) {
+        <div>Email must be correct.</div>
+      }
+     
     </div>
   }
   <br>

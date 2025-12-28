@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'inst-login',
@@ -16,7 +16,7 @@ export class Login {
     console.log(JSON.stringify(this.loginForm.value));
   }
 
-  get email(): FormControl {
-    return this.loginForm.get('email') as FormControl;
+  get email(): AbstractControl | null {
+    return this.loginForm.get('email');
   }
 }

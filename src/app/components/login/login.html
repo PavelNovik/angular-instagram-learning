@@ -8,10 +8,10 @@
       @if (email.hasError('required')) {
         <div>Email is required.</div>
       }
-      @if (email.hasError('email')) {
+      @if (email.hasError('pattern')) {
         <div>Email must be correct.</div>
       }
-     
+
     </div>
   }
   <br>

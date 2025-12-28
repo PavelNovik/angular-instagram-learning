@@ -9,7 +9,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class Login {
   loginForm = new FormGroup({
-    email: new FormControl('', [Validators.email, Validators.required]),
+    email: new FormControl('', [Validators.pattern(/gmail.com/), Validators.required]),
     password: new FormControl('', Validators.required),
   });
   onSubmit(): void {

@@ -1,8 +1,13 @@
 <p>login works!</p>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <label for="email">Email: </label>
-  <input formControlName="email" id="email" type="email"/>
+  <input formControlName="email" id="email" required type="email"/>
   <!--  <p>{{ loginForm.value.email }}</p>-->
+  @if (email!.invalid && (email!.dirty || email!.touched)) {
+    <div class="alert">
+      error
+    </div>
+  }
   <br>
   <label for="password">Password: </label>
   <input formControlName="password" id="password" type="password"/>

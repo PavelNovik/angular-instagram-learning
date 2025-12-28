@@ -52,13 +52,7 @@ export class Todos {
     // return this.http.get<TodoT[]>(`${this.httpAddress}`, this.credentials);
     this.http
       .get<TodoT[]>(`${this.httpAddress}`, this.credentials)
-      .pipe(
-        catchError((err: HttpErrorResponse) => {
-          this.beautyLogger.log(err.message, 'error');
-          return EMPTY;
-          // return throwError(err);
-        }),
-      )
+      .pipe(catchError(this.errorHandler.bind(this)))
       .subscribe((todos) => {
         this.todos$.next(todos);
       });
@@ -76,6 +70,7 @@ export class Todos {
     this.http
       .post<BaseResp<{ item: TodoT }>>(`${this.httpAddress}`, { title: title }, this.credentials)
       .pipe(
+        catchError(this.errorHandler.bind(this)),
         map((res) => {
           const newTodo = res.data.item;
           const todosState = this.todos$.getValue();
@@ -92,6 +87,7 @@ export class Todos {
     this.http
       .delete<BaseResp>(`${this.httpAddress}/${id}`, this.credentials)
       .pipe(
+        catchError(this.errorHandler.bind(this)),
         map(() => {
           return this.todos$.getValue().filter((e) => e.id !== id);
         }),
@@ -99,5 +95,9 @@ export class Todos {
       .subscribe((res) => {
         this.todos$.next(res);
       });
+  }
+  private errorHandler(error: HttpErrorResponse): Observable<never> {
+    this.beautyLogger.log(error.message, 'error');
+    return EMPTY;
   }
 }

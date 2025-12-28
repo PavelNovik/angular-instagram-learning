@@ -6,11 +6,12 @@ import { SlicePipe } from '@angular/common';
 import { CompA } from './components/comp-a/comp-a';
 import { CompB } from './components/comp-b/comp-b';
 import { Todolists } from './components/todolists/todolists';
+import { EmailForm } from './components/email-form/email-form';
 
 @Component({
   selector: 'inst-root',
   standalone: true,
-  imports: [FormsModule, Child, Fruit, SlicePipe, CompA, CompB, Todolists],
+  imports: [FormsModule, Child, Fruit, SlicePipe, CompA, CompB, Todolists, EmailForm],
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
   providers: [],

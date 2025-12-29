@@ -2,14 +2,27 @@
   color: brown;
 }
 
-.inputError {
-  border: 2px solid #ff2409;
-  background-color: aqua;
-  border-radius: 2px;
+//.inputError {
+//  border: 2px solid #ff2409;
+//  background-color: aqua;
+//  border-radius: 2px;
+//}
+//
+//.inputSuccess {
+//  border: 2px solid #49d328;
+//  background-color: #efde03;
+//  border-radius: 2px;
+//}
+
+
+.ng-valid[required], .ng-valid.required {
+  border-left: solid 5px #34ff07;
 }
 
-.inputSuccess {
-  border: 2px solid #49d328;
-  background-color: #efde03;
-  border-radius: 2px;
+.ng-invalid:not(form) {
+  border-left: solid 5px #ff0707;
+}
+
+.ng-pristine:not(form) {
+  border-left: solid 5px #111111;
 }

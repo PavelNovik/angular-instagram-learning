@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+.ng-valid[required], .ng-valid.required {
+  border-left: solid 5px #34ff07;
+}
+
+.ng-invalid:not(form) {
+  border-left: solid 5px #ff0707;
+}
+
+.ng-pristine:not(form) {
+  border-left: solid 5px #111111;
+}

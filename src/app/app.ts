@@ -1,18 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Child } from './components/child/child';
-import { Fruit } from './components/fruit/fruit';
 import { SlicePipe } from '@angular/common';
-import { CompA } from './components/comp-a/comp-a';
-import { CompB } from './components/comp-b/comp-b';
-import { Todolists } from './components/todolists/todolists';
-import { EmailForm } from './components/email-form/email-form';
-import { Login } from './components/login/login';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { Child } from './components/child/child';
 
 @Component({
   selector: 'inst-root',
   standalone: true,
-  imports: [FormsModule, Child, Fruit, SlicePipe, CompA, CompB, Todolists, EmailForm, Login],
+  imports: [FormsModule, SlicePipe, RouterOutlet, Child, RouterLink],
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
   providers: [],

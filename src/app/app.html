@@ -2,7 +2,16 @@
   <h1>{{ appTitle }}</h1>
 
 </div>
+<nav [class]="{navigation: true}">
+  <a routerLink="">Home</a>
+  <a routerLink="todolist">Todolist</a>
+  <a routerLink="compA">Component A</a>
+  <a routerLink="compB">Component B</a>
+  <a routerLink="login">Login</a>
+  <a routerLink="emailForm">Email Form</a>
+</nav>
 <hr>
+<router-outlet/>
 <div>
   <inst-child [titleProps]="text" (child)="getName($event)"/>
 </div>
@@ -42,13 +51,13 @@
 <h5 [class]="'default'" [class.new]="!isLoading()" [class.standard]="isLoading()">
   {{ lorem | slice: 0:19 }}
 </h5>
-<inst-fruit/>
-<inst-comp-a/>
-<inst-comp-b/>
+<!--<inst-fruit/>-->
+<!--<inst-comp-a/>-->
+<!--<inst-comp-b/>-->
 <!--@defer (on viewport) {-->
-<inst-todolists/>
+<!--<inst-todolists/>-->
 <!--}-->
 
-<inst-email-form/>
-<inst-login/>
+<!--<inst-email-form/>-->
+<!--<inst-login/>-->
 

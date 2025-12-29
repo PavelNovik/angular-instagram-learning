@@ -1,7 +1,8 @@
 <p>login works!</p>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <label for="email">Email: </label>
-  <input formControlName="email" id="email" required type="email"/>
+  <input formControlName="email" id="email" required type="email"
+         [class]="{inputError: email!.invalid && (email!.dirty || email!.touched), inputSuccess: email!.valid }"/>
   <!--  <p>{{ loginForm.value.email }}</p>-->
   @if (email!.invalid && (email!.dirty || email!.touched)) {
     <div class="alert">

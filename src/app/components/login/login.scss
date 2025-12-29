@@ -1,3 +1,15 @@
 .alert {
   color: brown;
 }
+
+.inputError {
+  border: 2px solid #ff2409;
+  background-color: aqua;
+  border-radius: 2px;
+}
+
+.inputSuccess {
+  border: 2px solid #49d328;
+  background-color: #efde03;
+  border-radius: 2px;
+}

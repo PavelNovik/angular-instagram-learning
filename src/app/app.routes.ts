@@ -5,6 +5,7 @@ import { CompA } from './components/comp-a/comp-a';
 import { CompB } from './components/comp-b/comp-b';
 import { Todolists } from './components/todolists/todolists';
 import { EmailForm } from './components/email-form/email-form';
+import { PageNotFound } from './components/page-not-found/page-not-found';
 
 export const routes: Routes = [
   {
@@ -30,11 +31,17 @@ export const routes: Routes = [
   {
     path: 'todolist',
     component: Todolists,
-    title: 'Todolists',
+    title: 'Todolist',
   },
   {
     path: 'emailForm',
     component: EmailForm,
     title: 'EmailForm',
   },
+  {
+    path: 'pageNotFound',
+    component: PageNotFound,
+    title: 'Page not found',
+  },
+  { path: '**', redirectTo: 'pageNotFound' },
 ];

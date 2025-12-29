@@ -3,12 +3,12 @@
 
 </div>
 <nav [class]="{navigation: true}">
-  <a routerLink="">Home</a>
-  <a routerLink="todolist">Todolist</a>
-  <a routerLink="compA">Component A</a>
-  <a routerLink="compB">Component B</a>
-  <a routerLink="login">Login</a>
-  <a routerLink="emailForm">Email Form</a>
+  <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+  <a routerLink="todolist" routerLinkActive="active">Todolist</a>
+  <a routerLink="compA" routerLinkActive="active">Component A</a>
+  <a routerLink="compB" routerLinkActive="active">Component B</a>
+  <a routerLink="login" routerLinkActive="active">Login</a>
+  <a routerLink="emailForm" routerLinkActive="active">Email Form</a>
 </nav>
 <hr>
 <router-outlet/>

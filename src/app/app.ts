@@ -1,13 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SlicePipe } from '@angular/common';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Child } from './components/child/child';
 
 @Component({
   selector: 'inst-root',
   standalone: true,
-  imports: [FormsModule, SlicePipe, RouterOutlet, Child, RouterLink],
+  imports: [FormsModule, SlicePipe, RouterOutlet, Child, RouterLink, RouterLinkActive],
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
   providers: [],

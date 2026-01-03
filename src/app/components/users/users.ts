@@ -22,10 +22,12 @@ export class Users implements OnInit {
   // }
 
   ngOnInit(): void {
-    const page = Number(this.route.snapshot.queryParamMap.get('page'));
-    console.log(page);
-    const currentPage = page ? page : 1;
-    this.getUsers(currentPage);
+    // const page = Number(this.route.snapshot.queryParamMap.get('page'));
+    // const currentPage = page ? page : 1;
+    // this.getUsers(currentPage);
+    this.route.queryParams.subscribe((params) => {
+      this.getUsers(params['page']);
+    });
   }
   getUsers(page: number): void {
     this.users$ = this.userService.getUsers(page);
@@ -33,9 +35,13 @@ export class Users implements OnInit {
   protected nextUsersHandler(): void {
     const page = Number(this.route.snapshot.queryParamMap.get('page'));
     const nextPage = page ? page + 1 : 2;
-    this.router.navigateByUrl(`users?page=${nextPage}`).then(() => {
-      this.getUsers(nextPage);
-    });
+    // this.router.navigateByUrl(`users?page=${nextPage}`).then(() => {
+    //   this.getUsers(nextPage);
+    // });
+    this.router.navigate(['users'], { queryParams: { page: nextPage } });
+    //   .then(() => {
+    //   this.getUsers(nextPage);
+    // });
   }
 
   // protected previousUsersHandler(): void {

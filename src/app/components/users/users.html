@@ -8,7 +8,7 @@
   }
 }
 <div>
-  <!--  <button (click)="previousUsersHandler()">Previous page of users</button>-->
+  <button [queryParams]="{page:1}" [routerLink]="['/users']">To start page</button>
   <button (click)="nextUsersHandler()">Next page of users</button>
 
 </div>

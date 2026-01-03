@@ -2,7 +2,13 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { credentialsInterceptor } from './interceptors/credentials-interceptor';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideBrowserGlobalErrorListeners(), provideRouter(routes)],
+  providers: [
+    provideHttpClient(withInterceptors([credentialsInterceptor])),
+    provideBrowserGlobalErrorListeners(),
+    provideRouter(routes),
+  ],
 };

@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { User, UserT } from '../../services/user';
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'inst-users',
@@ -15,12 +15,11 @@ export class Users implements OnInit {
   error = '';
   private userService = inject(User);
 
-  getUsers(): void {
-    this.userService.getUsers();
-  }
+  // getUsers(): void {
+  //  this.users$= this.userService.getUsers().items;
+  // }
 
   ngOnInit(): void {
-    this.getUsers();
-    this.users$ = this.userService.users$;
+    this.users$ = this.userService.getUsers();
   }
 }

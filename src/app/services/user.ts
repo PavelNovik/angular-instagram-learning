@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { BehaviorSubject, catchError, EMPTY, Observable } from 'rxjs';
+import { catchError, EMPTY, map, Observable } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BeautyLogger } from './beauty-logger';
 
@@ -24,7 +24,7 @@ type UserResp = {
   providedIn: 'root',
 })
 export class User {
-  users$: BehaviorSubject<UserT[]> = new BehaviorSubject<UserT[]>([]);
+  // users$: BehaviorSubject<UserT[]> = new BehaviorSubject<UserT[]>([]);
   httpAddress = `${environment.baseUrl}/1.0`;
   credentials = {
     withCredentials: true,
@@ -33,13 +33,14 @@ export class User {
   private http = inject(HttpClient);
   private beautyLogger = inject(BeautyLogger);
 
-  getUsers(): void {
-    this.http
+  getUsers(): Observable<UserT[]> {
+    return this.http
       .get<UserResp>(`${this.httpAddress}/users`, this.credentials)
-      .pipe(catchError(this.errorHandler.bind(this)))
-      .subscribe((resp: UserResp) => {
-        this.users$.next(resp.items);
-      });
+      .pipe(map((res) => res.items))
+      .pipe(catchError(this.errorHandler.bind(this)));
+    // .subscribe((resp: UserResp) => {
+    //   this.users$.next(resp.items);
+    // });
   }
 
   private errorHandler(error: HttpErrorResponse): Observable<never> {

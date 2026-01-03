@@ -39,7 +39,7 @@ export type Tasks = {
 })
 export class Todos {
   todos$: BehaviorSubject<TodoT[]> = new BehaviorSubject<TodoT[]>([]);
-  httpAddress = environment.baseUrl;
+  httpAddress = `${environment.baseUrl}/1.1/todo-lists`;
   credentials = {
     withCredentials: true,
     headers: { 'api-key': environment.apiKey },

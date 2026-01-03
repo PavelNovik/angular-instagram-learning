@@ -1,0 +1,9 @@
+<p>users works!</p>
+@for (user of users$ | async; track user.id) {
+  <div>{{ user.id }} - <a [routerLink]="['/profile', user.id]">{{ user.name }}</a></div>
+  <h5>{{ user.status }}</h5>
+  @if (user.photos.small) {
+    <img alt="user photo" [ngSrc]="user.photos.small">
+
+  }
+}

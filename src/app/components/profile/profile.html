@@ -1,0 +1,9 @@
+<p>profile works!</p>
+@if (profile$ | async; as profile) {
+  <h4>{{ profile.fullName }}</h4>
+
+}
+
+<!--<div *ngIf="profile$ | async as profile">-->
+<!--  {{ profile.fullName }}-->
+<!--</div>-->

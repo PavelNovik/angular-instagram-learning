@@ -6,12 +6,24 @@ import { CompB } from './components/comp-b/comp-b';
 import { Todolists } from './components/todolists/todolists';
 import { EmailForm } from './components/email-form/email-form';
 import { PageNotFound } from './components/page-not-found/page-not-found';
+import { Users } from './components/users/users';
+import { Profile } from './components/profile/profile';
 
 export const routes: Routes = [
   {
     path: '',
     component: Fruit,
     title: 'Fruit',
+  },
+  {
+    path: 'users',
+    component: Users,
+    title: 'Users',
+  },
+  {
+    path: 'profile/:userId',
+    component: Profile,
+    title: 'Profile',
   },
   {
     path: 'login',

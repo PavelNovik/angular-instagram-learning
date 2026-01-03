@@ -3,7 +3,13 @@
   <div>{{ user.id }} - <a [routerLink]="['/profile', user.id]">{{ user.name }}</a></div>
   <h5>{{ user.status }}</h5>
   @if (user.photos.small) {
-    <img alt="user photo" [ngSrc]="user.photos.small">
+    <img alt="user photo" height="100" width="100" [ngSrc]="user.photos.small">
 
   }
 }
+<div>
+  <!--  <button (click)="previousUsersHandler()">Previous page of users</button>-->
+  <button (click)="nextUsersHandler()">Next page of users</button>
+
+</div>
+

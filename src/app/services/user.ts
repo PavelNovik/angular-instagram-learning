@@ -33,9 +33,9 @@ export class User {
   private http = inject(HttpClient);
   private beautyLogger = inject(BeautyLogger);
 
-  getUsers(): Observable<UserT[]> {
+  getUsers(page: number): Observable<UserT[]> {
     return this.http
-      .get<UserResp>(`${this.httpAddress}/users`, this.credentials)
+      .get<UserResp>(`${this.httpAddress}/users?page=${page}`, this.credentials)
       .pipe(map((res) => res.items))
       .pipe(catchError(this.errorHandler.bind(this)));
     // .subscribe((resp: UserResp) => {

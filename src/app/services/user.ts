@@ -26,16 +26,20 @@ type UserResp = {
 export class User {
   // users$: BehaviorSubject<UserT[]> = new BehaviorSubject<UserT[]>([]);
   httpAddress = `${environment.baseUrl}/1.0`;
-  credentials = {
-    withCredentials: true,
-    headers: { 'api-key': environment.apiKey },
-  };
+  // credentials = {
+  //   withCredentials: true,
+  //   headers: { 'api-key': environment.apiKey },
+  // };
+
   private http = inject(HttpClient);
   private beautyLogger = inject(BeautyLogger);
 
   getUsers(page: number): Observable<UserT[]> {
     return this.http
-      .get<UserResp>(`${this.httpAddress}/users?page=${page}`, this.credentials)
+      .get<UserResp>(
+        `${this.httpAddress}/users?page=${page}`,
+        // , this.credentials
+      )
       .pipe(map((res) => res.items))
       .pipe(catchError(this.errorHandler.bind(this)));
     // .subscribe((resp: UserResp) => {

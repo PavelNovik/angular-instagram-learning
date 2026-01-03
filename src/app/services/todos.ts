@@ -40,10 +40,10 @@ export type Tasks = {
 export class Todos {
   todos$: BehaviorSubject<TodoT[]> = new BehaviorSubject<TodoT[]>([]);
   httpAddress = `${environment.baseUrl}/1.1/todo-lists`;
-  credentials = {
-    withCredentials: true,
-    headers: { 'api-key': environment.apiKey },
-  };
+  // credentials = {
+  //   withCredentials: true,
+  //   headers: { 'api-key': environment.apiKey },
+  // };
   private http = inject(HttpClient);
   private beautyLogger = inject(BeautyLogger);
 
@@ -51,14 +51,20 @@ export class Todos {
     // getTodos(): Observable<TodoT[]> {
     // return this.http.get<TodoT[]>(`${this.httpAddress}`, this.credentials);
     this.http
-      .get<TodoT[]>(`${this.httpAddress}`, this.credentials)
+      .get<TodoT[]>(
+        `${this.httpAddress}`,
+        // , this.credentials
+      )
       .pipe(catchError(this.errorHandler.bind(this)))
       .subscribe((todos) => {
         this.todos$.next(todos);
       });
   }
   getTasks(id?: string): Observable<Tasks> {
-    return this.http.get<Tasks>(`${this.httpAddress}/${id}/tasks`, this.credentials);
+    return this.http.get<Tasks>(
+      `${this.httpAddress}/${id}/tasks`,
+      // , this.credentials
+    );
   }
   createTodo(title: string): void {
     // createTodo(title: string): Observable<BaseResp<{ item: TodoT }>> {
@@ -68,7 +74,11 @@ export class Todos {
     //   this.credentials,
     // );
     this.http
-      .post<BaseResp<{ item: TodoT }>>(`${this.httpAddress}`, { title: title }, this.credentials)
+      .post<BaseResp<{ item: TodoT }>>(
+        `${this.httpAddress}`,
+        { title: title },
+        // , this.credentials
+      )
       .pipe(
         catchError(this.errorHandler.bind(this)),
         map((res) => {
@@ -85,7 +95,10 @@ export class Todos {
     // deleteTodo(id: string): Observable<BaseResp> {
     //   return this.http.delete<BaseResp>(`${this.httpAddress}/${id}`, this.credentials);
     this.http
-      .delete<BaseResp>(`${this.httpAddress}/${id}`, this.credentials)
+      .delete<BaseResp>(
+        `${this.httpAddress}/${id}`,
+        // , this.credentials
+      )
       .pipe(
         catchError(this.errorHandler.bind(this)),
         map(() => {

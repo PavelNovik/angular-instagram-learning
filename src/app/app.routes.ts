@@ -8,6 +8,7 @@ import { EmailForm } from './components/email-form/email-form';
 import { PageNotFound } from './components/page-not-found/page-not-found';
 import { Users } from './components/users/users';
 import { Profile } from './components/profile/profile';
+import { authGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
   {
@@ -19,11 +20,13 @@ export const routes: Routes = [
     path: 'users',
     component: Users,
     title: 'Users',
+    canActivate: [authGuard],
   },
   {
     path: 'profile/:userId',
     component: Profile,
     title: 'Profile',
+    canActivate: [authGuard],
   },
   {
     path: 'login',
@@ -44,6 +47,7 @@ export const routes: Routes = [
     path: 'todolist',
     component: Todolists,
     title: 'Todolist',
+    canActivate: [authGuard],
   },
   {
     path: 'emailForm',

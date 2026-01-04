@@ -1,8 +1,9 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SlicePipe } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Child } from './components/child/child';
+import { Auth } from './services/auth';
 
 @Component({
   selector: 'inst-root',
@@ -12,7 +13,8 @@ import { Child } from './components/child/child';
   styleUrls: ['./app.scss'],
   providers: [],
 })
-export class App {
+export class App implements OnInit {
+  authService = inject(Auth);
   lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit!';
   value = '';
   arr: string[] = ['One', 'Two', 'Three'];
@@ -28,5 +30,8 @@ export class App {
 
   constructor() {
     setTimeout(() => this.isLoading.set(false), 3000);
+  }
+  ngOnInit(): void {
+    this.authService.me();
   }
 }

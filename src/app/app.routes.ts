@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
 import { Fruit } from './components/fruit/fruit';
-import { Login } from './components/login/login';
+// import { Login } from './components/login/login';
 import { CompA } from './components/comp-a/comp-a';
 import { CompB } from './components/comp-b/comp-b';
-import { Todolists } from './components/todolists/todolists';
+// import { Todolists } from './components/todolists/todolists';
 import { EmailForm } from './components/email-form/email-form';
 import { PageNotFound } from './components/page-not-found/page-not-found';
-import { Users } from './components/users/users';
+// import { Users } from './components/users/users';
 import { Profile } from './components/profile/profile';
 import { authGuard } from './guards/auth-guard';
 
@@ -18,7 +18,8 @@ export const routes: Routes = [
   },
   {
     path: 'users',
-    component: Users,
+    loadComponent: () => import('./components/users/users').then((m) => m.Users),
+    // component: Users,
     title: 'Users',
     canActivate: [authGuard],
   },
@@ -30,7 +31,8 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    component: Login,
+    loadComponent: () => import('./components/login/login').then((m) => m.Login),
+    // component: Login,
     title: 'Login',
   },
   {
@@ -45,7 +47,8 @@ export const routes: Routes = [
   },
   {
     path: 'todolist',
-    component: Todolists,
+    loadComponent: () => import('./components/todolists/todolists').then((m) => m.Todolists),
+    // component: Todolists,
     title: 'Todolist',
     canActivate: [authGuard],
   },
